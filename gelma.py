@@ -76,8 +76,6 @@ class GelmaModel(QtCore.QAbstractTableModel):
             # se il val è vuoto, allora non ho editato (si potrebbe fare che è uguale al valore attuale del model)
             if val == "":
                 return False
-#            attr = self.mySQLClass.__table__.columns.keys()[index.column()]
-#            self._cache[index.row()].__setattr__(attr, val)
             self.data_model[index.row()+1][index.column()] = val
             #VIVA!
             return True
