@@ -81,6 +81,11 @@ class GelmaModel(QtCore.QAbstractTableModel):
             return True
         return False
 
+    def refresh_view(self):
+        self.emit(SIGNAL('layoutAboutToBeChanged()'))
+        #ricarichi il model di solito
+        self.emit(SIGNAL('layoutChanged()'))
+
 
 
 
