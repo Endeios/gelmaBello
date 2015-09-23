@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from PyQt4        import QtCore,QtGui,uic
 from PyQt4.QtCore import SIGNAL,Qt,QVariant
 import logging
@@ -51,14 +52,20 @@ class GelmaModel(QtCore.QAbstractTableModel):
         return len(self.data_model)-1
 
     def columnCount(self,parent):
-#        self.logger.debug("Model is %s"%self.model)
-#        return len(self.model[0].keys())
         return len(self.header)
 
     def headerData(self,col,orientation,role):
         if orientation == Qt.Horizontal and role == Qt.DisplayRole:
-#            return QVariant(self.model[0].keys()[col])
             return QVariant(self.header[col])
+
+    # i flags dicono cosa ti lascia fare : qui 
+    # - puoi editare l'item (cella)
+    # - puoi selezionare l'item (cella)
+    # - l'item è abilitato (non lo fa grigino)
+    def flags(self, index):
+        return (
+            QtCore.Qt.ItemIsEditable | QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable
+        )
 
 
 
