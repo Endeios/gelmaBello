@@ -67,6 +67,23 @@ class GelmaModel(QtCore.QAbstractTableModel):
             QtCore.Qt.ItemIsEditable | QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable
         )
 
+    # qui per settare i dati
+    def setData(self, index, value, role):
+        #se sto in editing
+        if role == QtCore.Qt.EditRole:
+            #value dal to string del value (uno magari preferisce i float...)
+            val = "{}".format(value.toString())
+            # se il val è vuoto, allora non ho editato (si potrebbe fare che è uguale al valore attuale del model)
+            if val == "":
+                return False
+#            attr = self.mySQLClass.__table__.columns.keys()[index.column()]
+#            self._cache[index.row()].__setattr__(attr, val)
+            self.data_model[index.row()+1][index.column()] = val
+            #VIVA!
+            return True
+        return False
+
+
 
 
 app = QtGui.QApplication(sys.argv)
