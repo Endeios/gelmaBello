@@ -15,9 +15,11 @@ class GelmaGui(QtGui.QMainWindow):
         self.logger = logging.getLogger('GelmaGui')
         self.my_model = GelmaModel('lol.csv')
         self.tableView.setModel(self.my_model)
+        #   questo è il modo "pitonico" di collegare segnali 
+        #   CONNETTI  v--di quest'oggetto  v--quendo emette questo segnale     v--questo callable
+        self.connect  (self.pushButton,    QtCore.SIGNAL('clicked()'),         self.save)
 
     def load(self):
-
         pass
 
     def save(self):
