@@ -19,11 +19,19 @@ class GelmaGui(QtGui.QMainWindow):
         #   CONNETTI  v--di quest'oggetto  v--quendo emette questo segnale     v--questo callable
         self.connect  (self.pushButton,    QtCore.SIGNAL('clicked()'),         self.save)
 
+        self.connect (self.tableView, QtCore.SIGNAL('clicked(QModelIndex)'),self.cellClicked)
+
     def load(self):
-        pass
+        self.logger.debug('loading...')
 
     def save(self):
-        pass
+        self.logger.debug('saving...')
+
+    def cellClicked(self,qmodelindex):
+        self.logger.debug('Clicked cell %s'%qmodelindex)
+        item_value = qmodelindex.data(QtCore.Qt.DisplayRole).toString()
+        self.logger.debug('Valore: %s'%item_value)
+
 
 
 
