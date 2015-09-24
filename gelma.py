@@ -39,6 +39,10 @@ class GelmaModel(QtCore.QAbstractTableModel):
     
     def __init__(self,filename,parent=None,*args):
         super(GelmaModel,self).__init__(parent,*args)
+        self.filename=filename
+        self.load_data(filename)
+
+    def load_data(self,filename):
         with open(filename) as data_file:
             self.reader = csv.reader(data_file)
             self.data_model = list()
@@ -94,6 +98,7 @@ class GelmaModel(QtCore.QAbstractTableModel):
     def refresh_view(self):
         self.emit(SIGNAL('layoutAboutToBeChanged()'))
         #ricarichi il model di solito
+        # self.load_data(self.filename)
         self.emit(SIGNAL('layoutChanged()'))
 
 
