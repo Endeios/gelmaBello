@@ -10,9 +10,9 @@ setup(
 
     package_data = {
         # If any package contains *.txt or *.rst files, include them:
-        '': ['*.txt', '*.rst'],
+        '': ['*.txt', '*.csv'],
         # And include any *.msg files found in the 'hello' package, too:
-        'hello': ['*.msg'],
+        'app': ['*.ui'],
     },
 
     # metadata for upload to PyPI
